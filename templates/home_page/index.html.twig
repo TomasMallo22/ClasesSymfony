@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<!-- section -->
+    <div id="fruits" class="section dark_bg layout_padding left_white">
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                    <div class="heading full text_align_center">
+                        <h2 class="white_font full text_align_center">Our Fruits</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            {% for p in post %}
+               <div class="col-md-4 margin_top_30">
+                    <div class="full fr">
+                        {% if p.imageName is not empty  %}
+                            <img class="img-responsive" src="{{ vich_uploader_asset(p) | imagine_filter('home_list') }}"  alt="#" />
+                        {% else %}
+                            <img class="img-responsive" src="{{ asset ('images/f1.png') }}"alt="#" />
+                        {% endif %}
+                    </div>
+                    <div class="full text_align_center">
+                        <h3 class="white_font">
+                           <a href="{{url('blog-detail', {'id':p.id})}}"> {{p.title}} </a><br>
+                        <strong class="theme_blue">
+                          <a href="{{url('blog')}}?cat={{p.category.id}}">  {{p.category.name}} </a> </strong></h3>
+                    </div>   
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+{% endblock %}

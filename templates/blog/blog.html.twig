@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<!-- section -->
+    <div id="blog" class="section dark_bg layout_padding right_white">
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                    <div class="heading full text_align_center">
+                        <h2 class="white_font full text_align_center">Our Blog</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 margin_top_30">
+                    <h2>Cat</h2>
+                        <ul> 
+                            {% for cat in category %}
+                                <li> <a href="{{url('blog')}}?cat={{cat.id}}&tag={{filter.tag}}"> {{cat.name}} </a></li>
+                            {% endfor %}
+                            <li> <a href="{{url('blog')}}?tag={{filter.tag}}"> TODOS </a></li>
+                        </ul>    
+                    <h2>Tag</h2>
+                        <ul> 
+                            {% for tag in tags %}
+                                <li> <a href="{{url('blog')}}?tag={{tag.id}}&cat={{filter.cat}}"> {{tag.name}} </a> </li>
+                            {% endfor %}
+                            <li> <a href="{{url('blog')}}?cat={{filter.cat}}"> TODAS </a></li>
+                        </ul>    
+                </div>
+                {% for post in posts %}
+                    <div class="col-md-4 margin_top_30">
+                            <div class="full" style="overflow: hidden;">
+                            <div class="full bl">
+                                {% if post.imageName is not empty  %}
+                                    <img class="img-responsive" src="{{ vich_uploader_asset(post) | imagine_filter('blog_list') }} "  alt="#" />
+                                {% else %}
+                                    <img class="img-responsive" src="{{ asset ('images/blog1.png') }}"alt="#" />
+                                {% endif %}
+                            </div>
+                            <div class="full blog_blue text_align_center">
+                                <h5 class="white_font">Post by David Mark {{post.createdAt | date('d/m/y')}}</h3>
+                                <p> <a href="{{ url('blog-detail', {'id': post.id} ) }}">  {{post.title}} </a></p>
+                            </div> 
+                            </div>  
+                    </div>
+                {% endfor %}
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+{% endblock %}

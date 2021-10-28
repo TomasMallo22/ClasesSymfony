@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ <!-- section -->
+    <div id="contact" class="section layout_padding">
+        <div class="container-fluid">
+        {{ form_start (form)}}
+             <div class="row">
+                
+                <div class="col-md-6 padding_left_0">
+                    <div class="full">
+                        <img class="float-left" src="{{ asset ('images/fruit_img.png') }}" alt="#" />
+                    </div>
+                </div>
+
+               <div class="col-md-6">
+                <div class="heading">
+                        <h2>Request a <strong class="theme_blue">Call Back</strong></h2>
+                    </div>
+                    <div class="full margin_top_20">
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                               {{ form_widget(form.name, {'attr': {'class':'form-control', 'placeholder': 'Name'}})}}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ form_widget(form.email, {'attr': {'class':'form-control', 'placeholder': 'Email'}})}}
+                            </div>
+                            <div class="col-sm-12">
+                                 {{ form_widget(form.telefono, {'attr': {'class':'form-control', 'placeholder': 'Phone'}})}}
+                            </div>
+                            <div class="col-sm-12">
+                                 {{ form_widget(form.mensaje, {'attr': {'class':'form-control', 'placeholder': 'Message'}})}}
+                            </div>
+                        </div>
+                        <button class="main_bt">Send</button>
+                    
+                    </div>   
+                    
+                </div>
+                
+            </div>
+        </div> 
+
+        
+            {{ form_rest(form)}}
+        {{ form_end (form)}}
+    </div>
+    <!-- end section -->
+{% endblock %}

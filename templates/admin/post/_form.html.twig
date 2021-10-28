@@ -1,0 +1,35 @@
+
+ 
+    
+    
+
+
+{{ form_start(form) }}
+                <div class="card-body">
+                        <div class="form-group">
+                            {{ form_label(form.title, 'Titulo') }}
+                            {{ form_widget(form.title, {'attr': {'class':'form-control', 'placeholder': 'Ingrese el titulo'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.category, 'Categoria') }}
+                            {{ form_widget(form.category, {'attr': {'class':'form-control', 'placeholder': 'Ingrese la categoria'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.tags, 'Etiqueta') }}
+                            {{ form_widget(form.tags, {'attr': {'class':'form-control', 'placeholder': 'Ingrese la etiqueta'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.content, 'Contenido') }}
+                            {{ form_widget(form.content, {'attr': {'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.imageFile, 'Imagen') }}
+                            {{ form_widget(form.imageFile, {'attr': {'class':'form-control'}})}}
+                        </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                </div>
+        {{form_rest(form)}}
+{{ form_end(form) }}
